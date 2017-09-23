@@ -1,4 +1,4 @@
-boolean isDone = true, sendingGcode = false;
+boolean isDone = true, sendingGcode = false, isReceiving = false;
 
 void sender_start() {
   if (isConnected) {
@@ -44,6 +44,7 @@ void home() {
 void send(String line) {
   if (isConnected) {
     if (isDone) {
+      lockdown();
       isDone = false;
       arm.write(line + '\n');
       debugger = line + '\n';
@@ -57,11 +58,16 @@ void send(String line) {
 void timeoutTimer() {
   int counter = 0;
   while(!isDone) {
+    if (isReceiving) {
+      counter = 0;
+      isReceiving = false;
+    }
     delay(100);
     counter += 100;
     if (counter >= 5000) {
       setStatus(ERROR_TIMEOUT);
       isDone = true;
+      lockup();
     }
   }
 }

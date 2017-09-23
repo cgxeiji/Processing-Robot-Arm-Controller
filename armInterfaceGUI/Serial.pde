@@ -30,6 +30,7 @@ void checkConnection() {
 
 void serialEvent(Serial p) {
   String s =  p.readString();
+  isReceiving = true;
   
   if (arm_isCmd(s, "$0")) {
     angles[0] = arm_getValue(s, "A");
@@ -52,13 +53,14 @@ void serialEvent(Serial p) {
     return;
   }
   
-  if (s.indexOf("DONE") == -1) {
+  if (s.indexOf("ok") == -1) {
     debugger = s;
   } else {
     setStatus(ARM_STAND_BY);
     debugger += "   ...done!\n";
     println(debugger);
     isDone = true;
+    lockup();
   }
 }
 

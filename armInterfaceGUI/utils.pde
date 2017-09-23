@@ -60,62 +60,51 @@ boolean isGcode(File file) {
   return false;
 }
 
+void setControls(int alpha) {
+  kAttack.setAlpha(alpha);
+  lAttack.setAlpha(alpha);
+  cbAttack.setAlpha(alpha);
+  
+  kBase.setAlpha(alpha);
+  kShoulder.setAlpha(alpha);
+  kElbow.setAlpha(alpha);
+  kWrist.setAlpha(alpha);
+  kHand.setAlpha(alpha);
+  
+  lBase.setAlpha(alpha);
+  lShoulder.setAlpha(alpha);
+  lElbow.setAlpha(alpha);
+  lWrist.setAlpha(alpha);
+  lHand.setAlpha(alpha);
+  
+  bGrip.setAlpha(alpha);
+  
+  b90.setAlpha(alpha);
+  b0.setAlpha(alpha);
+  
+  bHome.setAlpha(alpha);
+  
+  slider2dXY.setAlpha(alpha);
+  slider2dXZ.setAlpha(alpha);
+}
+
 void deactivateControls() {
-  kAttack.setAlpha(50);
-  lAttack.setAlpha(50);
-  cbAttack.setAlpha(50);
-  
-  kBase.setAlpha(50);
-  kShoulder.setAlpha(50);
-  kElbow.setAlpha(50);
-  kWrist.setAlpha(50);
-  kHand.setAlpha(50);
-  
-  lBase.setAlpha(50);
-  lShoulder.setAlpha(50);
-  lElbow.setAlpha(50);
-  lWrist.setAlpha(50);
-  lHand.setAlpha(50);
-  
-  bGrip.setAlpha(50);
-  
-  b90.setAlpha(50);
-  b0.setAlpha(50);
+  setControls(50);
   b90Send.setAlpha(50);
   b0Send.setAlpha(50);
+  
   calibration = false;
   sendingGcode = false;
-  
-  bHome.setAlpha(50);
-  
-  slider2dXY.setAlpha(50);
-  slider2dXZ.setAlpha(50);
 }
 
 void activateControls() {
-  kAttack.setAlpha(255);
-  lAttack.setAlpha(255);
-  cbAttack.setAlpha(255);
-  
-  kBase.setAlpha(255);
-  kShoulder.setAlpha(255);
-  kElbow.setAlpha(255);
-  kWrist.setAlpha(255);
-  kHand.setAlpha(255);
-  
-  lBase.setAlpha(255);
-  lShoulder.setAlpha(255);
-  lElbow.setAlpha(255);
-  lWrist.setAlpha(255);
-  lHand.setAlpha(255);
-  
-  bGrip.setAlpha(255);
-  
-  b90.setAlpha(255);
-  b0.setAlpha(255);
-  
-  bHome.setAlpha(255);
-  
-  slider2dXY.setAlpha(255);
-  slider2dXZ.setAlpha(255);
+  setControls(255);
+}
+
+void lockdown() {
+  setControls(100);
+}
+
+void lockup() {
+  setControls(255);
 }
