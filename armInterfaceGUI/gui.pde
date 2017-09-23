@@ -83,7 +83,7 @@ public void b90_click1(GButton source, GEvent event) { //_CODE_:b90:200019:
   angles[3] = 90;
   angles[4] = 90;
   send("M105");
-  calibration = true;
+  calibrationMode = true;
   b0Send.setAlpha(50);
   b90Send.setAlpha(255);
 } //_CODE_:b90:200019:
@@ -146,7 +146,7 @@ public void b0_click1(GButton source, GEvent event) { //_CODE_:b0:427289:
   angles[3] = 0;
   angles[4] = 0;
   send("M107");
-  calibration = true;
+  calibrationMode = true;
   b90Send.setAlpha(50);
   b0Send.setAlpha(255);
 } //_CODE_:b0:427289:
@@ -158,7 +158,7 @@ public void b0Send_click1(GButton source, GEvent event) { //_CODE_:b0Send:359807
   angles[2] = 180;
   angles[3] = 0;
   angles[4] = 0;
-  calibration = false;
+  calibrationMode = false;
   b0Send.setAlpha(50);
 } //_CODE_:b0Send:359807:
 
@@ -169,14 +169,14 @@ public void b90Send_click1(GButton source, GEvent event) { //_CODE_:b90Send:4307
   angles[2] = 90;
   angles[3] = 90;
   angles[4] = 90;
-  calibration = false;
+  calibrationMode = false;
   b90Send.setAlpha(50);
 } //_CODE_:b90Send:430743:
 
 public void bHome_click1(GButton source, GEvent event) { //_CODE_:bHome:330187:
   send("G28");
   home();
-  calibration = false;
+  calibrationMode = false;
   b0Send.setAlpha(50);
   b90Send.setAlpha(50);
 } //_CODE_:bHome:330187:

@@ -27,6 +27,13 @@ public void setup(){
   names[2] = 'C';
   names[3] = 'D';
   names[4] = 'E';
+
+  calibration[0] = 300;
+  calibration[1] = 300;
+  calibration[2] = 300;
+  calibration[3] = 300;
+  calibration[4] = 300;
+  calibration[5] = 300;
   
   img_arm = loadImage("braccio_label.png");
   img_xy = loadImage("xy.png");
@@ -60,6 +67,144 @@ public void draw(){
     fill(0, 200);
     rect(0, 0, width, height);
   }
+  
+  // Move on the X Y Z plane with the keyboard
+  if (kb.isPressed('w')) {
+    y += 1.0;
+    send("G01 X" + x + " Y" + y + " Z" + z + " F100");
+  }
+  if (kb.isPressed('s')) {
+    y -= 1.0;
+    send("G01 X" + x + " Y" + y + " Z" + z + " F100");
+  }
+  if (kb.isPressed('a')) {
+    x -= 1.0;
+    send("G01 X" + x + " Y" + y + " Z" + z + " F100");
+  }
+  if (kb.isPressed('d')) {
+    x += 1.0;
+    send("G01 X" + x + " Y" + y + " Z" + z + " F100");
+  }
+  if (kb.isPressed('r')) {
+    z += 1.0;
+    send("G01 X" + x + " Y" + y + " Z" + z + " F100");
+  }
+  if (kb.isPressed('f')) {
+    z -= 1.0;
+    send("G01 X" + x + " Y" + y + " Z" + z + " F100");
+  }
+
+  // Open and close the grip
+  if (kb.pushedOnce('q')) {
+    open = !open;
+    if (open) {
+      send("M101");
+    } else {
+      send("M100");
+    }
+  }
+
+  // Enable / Disable calibration mode
+  if (kb.pushedOnce('y')) {
+    calibrationMode = !calibrationMode;
+    if (calibrationMode) {
+      send("M103");
+      println("Calibration Mode Enabled");
+    } else {
+      send("M104");
+      println("Calibration Mode Disabled");
+    }
+  }
+
+  // Move each motor individually
+  if (kb.pushedOnce('0')) {
+    joint = 0;
+  }
+  if (kb.pushedOnce('1')) {
+    joint = 1;
+  }
+  if (kb.pushedOnce('2')) {
+    joint = 2;
+  }
+  if (kb.pushedOnce('3')) {
+    joint = 3;
+  }
+  if (kb.pushedOnce('4')) {
+    joint = 4;
+  }
+  if (kb.pushedOnce('5')) {
+    joint = 5;
+  }
+  if (kb.isPressed('m')) {
+    if (calibrationMode) {
+      calibration[joint] -= 1.0;
+      send("G54 " + names[joint] + "" + calibration[joint]);
+    } else {
+      angles[joint] -= 1.0;
+      send("G53 " + names[joint] + "" + angles[joint]);
+    }
+  }
+  if (kb.isPressed('n')) {
+    if (calibrationMode) {
+      calibration[joint] += 1.0;
+      send("G54 " + names[joint] + "" + calibration[joint]);
+    } else {
+      angles[joint] += 1.0;
+      send("G53 " + names[joint] + "" + angles[joint]);
+    }
+  }
+
+  /* TODO: decide if stays or not
+  if (kb.pushedOnce('u')) {
+    angles[0] = 90;
+    angles[1] = 90;
+    angles[2] = 90;
+    angles[3] = 90;
+    angles[4] = 90;
+    angles[5] = 10;
+    send("M105");
+    calibration[0] = 300;
+    calibration[1] = 300;
+    calibration[2] = 300;
+    calibration[3] = 300;
+    calibration[4] = 300;
+    calibration[5] = 300;
+  }
+  if (kb.pushedOnce('i')) {
+    angles[0] = 180;
+    angles[1] = 45;
+    angles[2] = 180;
+    angles[3] = 0;
+    angles[4] = 0;
+    angles[5] = 73;
+    send("M107");
+    calibration[0] = 300;
+    calibration[1] = 300;
+    calibration[2] = 300;
+    calibration[3] = 300;
+    calibration[4] = 300;
+    calibration[5] = 300;
+  }
+  if (kb.pushedOnce('j')) {
+    send("M106 A" + calibration[0] + " B" + calibration[1] + " C" + calibration[2] + " D" + calibration[3] + " E" + calibration[4] + " F" + calibration[5]);
+    angles[0] = 90;
+    angles[1] = 90;
+    angles[2] = 90;
+    angles[3] = 90;
+    angles[4] = 90;
+    angles[5] = 10;
+  }
+  if (kb.pushedOnce('k')) {
+    send("M108 A" + calibration[0] + " B" + calibration[1] + " C" + calibration[2] + " D" + calibration[3] + " E" + calibration[4] + " F" + calibration[5]);
+    angles[0] = 180;
+    angles[1] = 45;
+    angles[2] = 180;
+    angles[3] = 0;
+    angles[4] = 0;
+    angles[5] = 73;
+  }
+  */
+
 }
 
 // Use this method to add additional statements

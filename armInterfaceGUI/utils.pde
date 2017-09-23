@@ -20,10 +20,11 @@ String debugger = "";
 
 float angles[] = new float[5];
 char names[] = new char[5];
+float calibration[] = new float[6];
 
 float x, y, z, _x, _y, _z;
 boolean open = true;
-boolean calibration = false;
+boolean calibrationMode = false;
 
 float attackAngle;
 
@@ -83,7 +84,7 @@ void deactivateControls() {
   b0.setAlpha(50);
   b90Send.setAlpha(50);
   b0Send.setAlpha(50);
-  calibration = false;
+  calibrationMode = false;
   sendingGcode = false;
   
   bHome.setAlpha(50);
