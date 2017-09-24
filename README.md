@@ -1,6 +1,11 @@
 # Processing-Robot-Arm-Controller
 Keyboard and GUI Controller for sending Gcode to a robotic arm
 
+## How to use?
+There are two ways you can use this interface:
+1. **Sketch Version**: Download the Processing sketch to compile and run using the Processing IDE.
+1. **Compiled Version**: Download the executable file (for Windows only). For 32-bit systems, it needs Java 8.0 to be installed.
+
 ## Keyboard Layout
 
 ### Movement
