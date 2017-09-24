@@ -58,8 +58,8 @@ public void draw(){
   
   // Current Position Crosshair
   fill(255, 0, 0);
-  ellipse(centerXY[0] + map(_x, -400, 400, -150, 150), centerXY[1] - map(_y, -400, 400, -150, 150), 10, 10);
-  ellipse(centerXZ[0] + map(_x, -400, 400, -150, 150), centerXZ[1] - map(_z, -200, 400, -150, 150), 10, 10);
+  ellipse(centerXY[0] + map(_x, -400, 400, -145, 145), centerXY[1] - map(_y, -400, 400, -145, 145), 10, 10);
+  ellipse(centerXZ[0] + map(_x, -400, 400, -145, 145), centerXZ[1] - map(_z, -200, 400, -145, 145), 10, 10);
   
   // Braccio Image
   image(img_arm, 20, 200, 500, 500);
@@ -71,27 +71,35 @@ public void draw(){
   // Move on the X Y Z plane with the keyboard
   if (kb.isPressed('w')) {
     y += 1.0;
-    send("G01 X" + x + " Y" + y + " Z" + z + " F100");
+    slider2dXY.setValueY(y);
+    //send("G01 X" + x + " Y" + y + " Z" + z + " F100");
   }
   if (kb.isPressed('s')) {
     y -= 1.0;
-    send("G01 X" + x + " Y" + y + " Z" + z + " F100");
+    slider2dXY.setValueY(y);
+    //send("G01 X" + x + " Y" + y + " Z" + z + " F100");
   }
   if (kb.isPressed('a')) {
     x -= 1.0;
-    send("G01 X" + x + " Y" + y + " Z" + z + " F100");
+    slider2dXY.setValueX(x);
+    //slider2dXZ.setValueX(x);
+    //send("G01 X" + x + " Y" + y + " Z" + z + " F100");
   }
   if (kb.isPressed('d')) {
     x += 1.0;
-    send("G01 X" + x + " Y" + y + " Z" + z + " F100");
+    slider2dXY.setValueX(x);
+    //slider2dXZ.setValueX(x);
+    //send("G01 X" + x + " Y" + y + " Z" + z + " F100");
   }
   if (kb.isPressed('r')) {
     z += 1.0;
-    send("G01 X" + x + " Y" + y + " Z" + z + " F100");
+    slider2dXZ.setValueY(z);
+    //send("G01 X" + x + " Y" + y + " Z" + z + " F100");
   }
   if (kb.isPressed('f')) {
     z -= 1.0;
-    send("G01 X" + x + " Y" + y + " Z" + z + " F100");
+    slider2dXZ.setValueY(z);
+    //send("G01 X" + x + " Y" + y + " Z" + z + " F100");
   }
 
   // Open and close the grip
