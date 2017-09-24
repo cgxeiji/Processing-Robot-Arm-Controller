@@ -20,28 +20,28 @@ There is a `test.gcode` file included to test the interface for loading/executin
 ## Keyboard Layout
 
 ### Movement
-Key | Description
-:---: | -----------
-W | Move 1mm on the +Y
-A | Move 1mm on the -X
-S | Move 1mm on the +X
-D | Move 1mm on the -Y
-R | Move 1mm on the +Z
-F | Move 1mm on the -Z
+Key | Description | Gcode
+:---: | ----------- | ----
+W | Move 1mm on the +Y | `G1 Ynn.n F100`
+A | Move 1mm on the -X | `G1 Xnn.n F100`
+S | Move 1mm on the +X | `G1 Xnn.n F100`
+D | Move 1mm on the -Y | `G1 Ynn.n F100`
+R | Move 1mm on the +Z | `G1 Znn.n F100`
+F | Move 1mm on the -Z | `G1 Znn.n F100`
 ### Rotation
-Key | Description
-:---: | -----------
-0~5 | Select servo 0..5
-M | Substract 1 degree to the angle of the selected servo -> `G53 A..Fnn.n`
-N | Add 1 degree to the angle of the selected servo -> `G53 A..Fnn.n`
+Key | Description | Gcode
+:---: | ----------- | ----
+0~5 | Select servo 0..5 | `A..F`
+M | Substract 1 degree to the angle of the selected servo | `G53 [A..F]nn.n`
+N | Add 1 degree to the angle of the selected servo | `G53 [A..F]nn.n`
 ### Grip Control
-Key | Description
-:---: | -----------
-Q | Open/Close grip
+Key | Description | Gcode
+:---: | ----------- | ----
+Q | Open/Close grip | `M101` / `M100`
 ### Calibration Mode
-Key | Description
-:---: | -----------
-Y | Enable/Disable calibration mode
-0~5 | Select servo 0..5
-M | *[While calibration mode enabled]* Substract 1ms to the pulse width of the selected servo -> `G54 A..Fnn`
-N | *[While calibration mode enabled]* Add 1ms to the pulse width of the selected servo -> `G54 A..Fnn`
+Key | Description | Gcode
+:---: | ----------- | ----
+Y | Enable/Disable calibration mode | `M103` / `M104`
+0~5 | Select servo 0..5 | `A..F`
+M | *[While calibration mode enabled]* Substract 1ms to the pulse width of the selected servo | `G54 [A..F]nn`
+N | *[While calibration mode enabled]* Add 1ms to the pulse width of the selected servo | `G54 [A..F]nn`
