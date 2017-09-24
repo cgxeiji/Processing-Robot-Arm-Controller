@@ -104,12 +104,7 @@ public void draw(){
 
   // Open and close the grip
   if (kb.pushedOnce('q')) {
-    open = !open;
-    if (open) {
-      send("M101");
-    } else {
-      send("M100");
-    }
+    bGrip_click1(bGrip, GEvent.CLICKED);
   }
 
   // Enable / Disable calibration mode
