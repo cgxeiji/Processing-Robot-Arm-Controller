@@ -50,11 +50,18 @@ void serialEvent(Serial p) {
     _x = arm_getValue(s, "X");
     _y = arm_getValue(s, "Y");
     _z = arm_getValue(s, "Z");
+
+    slider2dXY.setLocalColorScheme(GCScheme.GREEN_SCHEME);
+    slider2dXZ.setLocalColorScheme(GCScheme.GREEN_SCHEME);
     return;
   }
   
   if (s.indexOf("ok") == -1) {
     debugger = s;
+    if (s.indexOf("Invalid") != -1) {
+      slider2dXY.setLocalColorScheme(GCScheme.RED_SCHEME);
+      slider2dXZ.setLocalColorScheme(GCScheme.RED_SCHEME);
+    }
   } else {
     setStatus(ARM_STAND_BY);
     debugger += "   ...done!\n";
