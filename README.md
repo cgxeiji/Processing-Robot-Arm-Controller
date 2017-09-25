@@ -2,16 +2,16 @@
 Keyboard and GUI Controller for sending Gcode to a robotic arm
 
 ## How to use?
-1. Make sure you have installed the Processing IDE on your computer.
+1. Make sure you have installed the **Processing IDE** on your computer.
     1. If not, you can get it from [here](https://processing.org/download/).
-1. Open Processing IDE.
-1. Check if you have the G4P library installed on Processing.
+1. Open **Processing IDE**.
+1. Check if you have the **G4P library** installed on **Processing**.
     1. If not, go to `Sketch->Import Library...->Add Library...`
     1. Inside the `Libraries` tab, search for `G4P`.
     1. Select `G4P`.
     1. Click `Install`.
 1. Download this repository.
-1. Open the `armInterfaceGUI.pde` file on the Processing IDE.
+1. Open the `armInterfaceGUI.pde` file on the **Processing IDE**.
 1. Click on `Run`.
 1. Done!
 
