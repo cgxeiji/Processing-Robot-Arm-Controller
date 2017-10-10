@@ -11,6 +11,9 @@ void serialEvent(Serial myPort) {
 }
 
 
+final int kMinServoMs = 100;
+final int kMaxServoMs = 650;
+
 final int kMaxUpdateRate = 100; // in milliseconds.
 final int kMaxServos = 6;
 
@@ -31,8 +34,8 @@ void setup() {
   size(700,400);
   
   gServoValues = new ArmState[3];
-  gServoValues[0] = new ArmState(100,500,300);
-  gServoValues[1] = new ArmState(100,500,300);
+  gServoValues[0] = new ArmState(kMinServoMs,kMaxServoMs,300);
+  gServoValues[1] = new ArmState(kMinServoMs,kMaxServoMs,300);
   gServoValues[2] = new ArmState(0,180,90);
   
   cp5 = new ControlP5(this);
