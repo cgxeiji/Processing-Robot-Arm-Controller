@@ -45,3 +45,10 @@ Y | Enable/Disable calibration mode | `M103` / `M104`
 0~5 | Select servo 0..5 | `A..F`
 M | *[While calibration mode enabled]* Substract 1ms to the pulse width of the selected servo | `G54 [A..F]nn`
 N | *[While calibration mode enabled]* Add 1ms to the pulse width of the selected servo | `G54 [A..F]nn`
+
+
+## Calibration Sketch
+
+First thing to do is to calibrate your arm. You can use the gui describe above, or use the dedicated calibration sketch `armCalibrateGUI.pde`. This sketch uses the **ControlP5** gui library, follow the instructions as above.
+
+
